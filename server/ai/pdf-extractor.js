@@ -122,9 +122,11 @@ class PDFExtractor {
     };
 
     // Detect tables (look for aligned columns)
+    // Note: no /g flag – these are used with .test() across multiple lines and
+    // must not carry lastIndex state between calls.
     const tablePatterns = [
-      /^\s*\w+\s+\d+\.\d+\s+\w+/g,  // test name, value, unit
-      /^\s*\w+\s+\d+\s+\d+\s*-\s*\d+/g  // test name, value, reference range
+      /^\s*\w+\s+\d+\.\d+\s+\w+/,  // test name, decimal-value, unit
+      /^\s*\w+\s+\d+\s+\d+\s*-\s*\d+/  // test name, integer-value, reference range
     ];
 
     let tableCount = 0;
