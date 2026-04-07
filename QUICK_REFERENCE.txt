@@ -1,0 +1,199 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                  ANALISI TRACKER - QUICK REFERENCE CARD                     ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🚀 STARTUP                                                                  │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  First Time:
+    Mac/Linux:  ./setup.sh && ./start.sh
+    Windows:    setup.bat && start.bat
+
+  Every Time After:
+    Mac/Linux:  ./start.sh
+    Windows:    start.bat
+
+  App URL:     http://localhost:3000
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 📊 SAMPLE DATA                                                              │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Patient 1: Chiara
+    • 3 creatinine readings (normal)
+    • 3 glucose readings (normal)
+    • 3 eGFR readings (normal)
+    → Healthy baseline
+
+  Patient 2: Causio
+    • 4 creatinine readings (improving)
+    • 4 glucose readings (high → normal)
+    • 4 eGFR readings (low → normal)
+    • 2 HbA1c readings (improving)
+    → Shows real improvement!
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🔧 CONFIGURATION (.env.local)                                               │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Basic Settings:
+    PORT=3000                    # Server port
+    NODE_ENV=development         # Environment
+
+  Analytics:
+    MIN_DATA_POINTS=5            # Minimum for analysis
+    ANOMALY_Z_SCORE_THRESHOLD=3  # Anomaly threshold
+
+  AI Features (Optional!):
+    ENABLE_AI_CHAT=true          # Enable chat
+    ENABLE_AI_SUMMARIES=true     # Enable summaries
+
+    # Add API keys if you want AI:
+    GEMINI_API_KEY=
+    OPENAI_API_KEY=
+    ANTHROPIC_API_KEY=
+
+  ⚠ All features work WITHOUT API keys!
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🛠️ TROUBLESHOOTING                                                          │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Problem: Command not found
+    Fix: chmod +x setup.sh start.sh
+
+  Problem: Node.js not found
+    Fix: Install from https://nodejs.org/ (18+)
+
+  Problem: Port 3000 in use
+    Mac/Linux: lsof -ti:3000 | xargs kill -9
+    Windows:   taskkill /F /PID [PID]
+
+  Problem: Server won't start
+    Fix: ./setup.sh (run setup again)
+
+  Problem: Need to check data
+    Fix: node scripts/validate-data.js
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 📁 FILES CREATED                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Setup Scripts:
+    • setup.sh           - Mac/Linux one-time setup
+    • setup.bat          - Windows one-time setup
+
+  Start Scripts:
+    • start.sh           - Mac/Linux startup
+    • start.bat          - Windows startup
+
+  Configuration:
+    • .env.local         - Master config (edit this!)
+    • .env               - Auto-created from .env.local
+
+  Documentation:
+    • QUICKSTART.md      - 3-step guide
+    • STARTUP_GUIDE.md   - Detailed guide
+    • STARTUP_README.md  - Overview
+
+  Data:
+    • data/lab-data-initial.json  - Chiara & Causio
+    • data/lab-data.json          - Auto-created
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ ✅ FEATURES (All Work Offline)                                             │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Core Analytics:
+    ✓ Trend analysis (direction, rate, significance)
+    ✓ Correlation detection (Pearson, Spearman)
+    ✓ Anomaly detection (z-score, rate-of-change)
+    ✓ Predictive analytics (ARIMA, regression)
+    ✓ Statistical analysis (descriptive, distributions)
+    ✓ Data visualization (charts, graphs)
+
+  Data Management:
+    ✓ Multi-patient support
+    ✓ Medication tracking
+    ✓ Event logging
+    ✓ Export (CSV, JSON, PDF)
+
+  Optional AI Features (requires API key):
+    🤖 AI chat
+    📄 PDF processing
+    📝 AI summaries
+    💊 Medication analysis
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🔄 COMMON WORKFLOWS                                                         │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Start the app:
+    ./start.sh
+
+  Stop the app:
+    Press Ctrl+C
+
+  Validate data:
+    node scripts/validate-data.js
+
+  Reinstall dependencies:
+    ./setup.sh
+
+  Edit configuration:
+    nano .env.local
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 📚 DOCUMENTATION                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  Quick Start:
+    QUICKSTART.md
+
+  Detailed Guides:
+    STARTUP_GUIDE.md
+    STARTUP_README.md
+
+  Full Documentation:
+    README.md
+    docs/
+
+  API Reference:
+    API_DOCUMENTATION.md
+
+  Testing:
+    TESTING_GUIDE.md
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🎯 TIME TO START                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  First time:  ~5 minutes (install dependencies)
+  Restarts:    ~15 seconds
+  Full setup:  2 commands!
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 🔒 PRIVACY                                                                  │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  ✓ 100% local (data never leaves your machine)
+  ✓ Works offline
+  ✓ No tracking
+  ✓ Open source
+  ✓ API keys optional
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ 📝 NOTES                                                                    │
+└────────────────────────────────────────────────────────────────────────────┘
+
+  • Run setup first: ./setup.sh
+  • Then start: ./start.sh
+  • All features work offline
+  • API keys are completely optional
+  • Data stays on your machine
+  • No internet required
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║  🎉 SUCCESS! Your app is running at http://localhost:3000                   ║
+╚════════════════════════════════════════════════════════════════════════════╝

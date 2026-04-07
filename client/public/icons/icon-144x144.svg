@@ -1,0 +1,31 @@
+
+    <svg width="144" height="144" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="144" height="144" fill="#ffffff" rx="21.599999999999998"/>
+
+      <!-- Medical cross (simplified) -->
+      <g transform="translate(14.4, 14.4)">
+        <!-- Chart bars -->
+        <rect x="36" y="64.8" width="11.52" height="50.4" fill="#0d9488" rx="2.88"/>
+        <rect x="54.72" y="50.4" width="11.52" height="64.8" fill="#0d9488" rx="2.88"/>
+        <rect x="73.44" y="36" width="11.52" height="79.2" fill="#0d9488" rx="2.88"/>
+        <rect x="92.16" y="21.599999999999998" width="11.52" height="93.60000000000001" fill="#0d9488" rx="2.88"/>
+
+        <!-- Trend line -->
+        <polyline
+          points="41.76,72 60.48,57.6 79.2,43.199999999999996 97.92,28.8"
+          fill="none"
+          stroke="#f59e0b"
+          stroke-width="4.32"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- Data points -->
+        <circle cx="41.76" cy="72" r="3.6" fill="#f59e0b"/>
+        <circle cx="60.48" cy="57.6" r="3.6" fill="#f59e0b"/>
+        <circle cx="79.2" cy="43.199999999999996" r="3.6" fill="#f59e0b"/>
+        <circle cx="97.92" cy="28.8" r="3.6" fill="#f59e0b"/>
+      </g>
+    </svg>
+  

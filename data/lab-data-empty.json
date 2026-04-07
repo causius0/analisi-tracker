@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-04-07T00:00:00.000Z",
+  "updatedAt": "2026-04-07T00:00:00.000Z",
+  "patients": {},
+  "lastProcessed": 0,
+  "metadata": {
+    "schema": "multi-patient-v1",
+    "exportDate": "2026-04-07",
+    "totalPatients": 0,
+    "description": "Empty template for adding new patients and lab results"
+  }
+}

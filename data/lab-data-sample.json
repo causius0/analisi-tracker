@@ -1,0 +1,2531 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-04-07T00:00:00.000Z",
+  "updatedAt": "2026-04-07T00:00:00.000Z",
+  "patients": {
+    "patient_chiara": {
+      "id": "patient_chiara",
+      "name": "Chiara",
+      "dateOfBirth": "1995-05-15",
+      "gender": "F",
+      "bloodType": "A+",
+      "allergies": [
+        {
+          "name": "Penicillin",
+          "severity": "moderate",
+          "reaction": "Rash"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Metformin",
+          "dosage": "500mg twice daily",
+          "startDate": "2023-06-01",
+          "prescriber": "Dr. Bianchi"
+        },
+        {
+          "name": "Lisinopril",
+          "dosage": "10mg once daily",
+          "startDate": "2023-08-15",
+          "prescriber": "Dr. Rossi"
+        }
+      ],
+      "conditions": [
+        {
+          "name": "Type 2 Diabetes",
+          "diagnosedDate": "2023-05-01",
+          "status": "active"
+        },
+        {
+          "name": "Hypertension",
+          "diagnosedDate": "2023-07-01",
+          "status": "active"
+        }
+      ],
+      "labResults": [
+        {
+          "date": "2024-01-15",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "0.85",
+              "unit": "mg/dL",
+              "referenceRange": "0.51 - 0.95",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "92",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "18",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "115",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "6.2",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "22",
+              "unit": "U/L",
+              "referenceRange": "7 - 56",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "24",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "210",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "55",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "135",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "150",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "13.8",
+              "unit": "g/dL",
+              "referenceRange": "12.0 - 15.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "41.5",
+              "unit": "%",
+              "referenceRange": "36.0 - 46.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "6.8",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "4.65",
+              "unit": "10^6/uL",
+              "referenceRange": "4.0 - 5.2",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "265",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.8",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.2",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.2",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "140",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.4",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "32",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "450",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "85",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "45",
+              "unit": "ng/mL",
+              "referenceRange": "11 - 307",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "5.2",
+              "unit": "mg/dL",
+              "referenceRange": "2.5 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.2",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.3",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.9",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "chiara-labs-2024-01-15.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-01-15T10:30:00.000Z",
+            "pdfPages": 3,
+            "notes": "Routine diabetes follow-up"
+          }
+        },
+        {
+          "date": "2024-03-20",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "0.88",
+              "unit": "mg/dL",
+              "referenceRange": "0.51 - 0.95",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "95",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "16",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "105",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.9",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "28",
+              "unit": "U/L",
+              "referenceRange": "7 - 56",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "26",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "195",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "58",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "118",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "135",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "14.1",
+              "unit": "g/dL",
+              "referenceRange": "12.0 - 15.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "42.2",
+              "unit": "%",
+              "referenceRange": "36.0 - 46.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "7.2",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "4.72",
+              "unit": "10^6/uL",
+              "referenceRange": "4.0 - 5.2",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "272",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.6",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.3",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.4",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "141",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.5",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "38",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "520",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "92",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "52",
+              "unit": "ng/mL",
+              "referenceRange": "11 - 307",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "4.8",
+              "unit": "mg/dL",
+              "referenceRange": "2.5 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.4",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.4",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "3.0",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "chiara-labs-2024-03-20.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-03-20T14:15:00.000Z",
+            "pdfPages": 3,
+            "notes": "Improving glucose control with Metformin"
+          }
+        },
+        {
+          "date": "2024-06-18",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "0.82",
+              "unit": "mg/dL",
+              "referenceRange": "0.51 - 0.95",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "98",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "15",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "98",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.6",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "25",
+              "unit": "U/L",
+              "referenceRange": "7 - 56",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "23",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "185",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "62",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "105",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "125",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "13.9",
+              "unit": "g/dL",
+              "referenceRange": "12.0 - 15.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "41.8",
+              "unit": "%",
+              "referenceRange": "36.0 - 46.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "6.5",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "4.68",
+              "unit": "10^6/uL",
+              "referenceRange": "4.0 - 5.2",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "268",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.5",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.25",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.3",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "139",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.6",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "42",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "580",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "95",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "58",
+              "unit": "ng/mL",
+              "referenceRange": "11 - 307",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "4.5",
+              "unit": "mg/dL",
+              "referenceRange": "2.5 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.3",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.5",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "chiara-labs-2024-06-18.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-06-18T09:45:00.000Z",
+            "pdfPages": 3,
+            "notes": "Excellent response to treatment - HbA1c now in normal range"
+          }
+        },
+        {
+          "date": "2024-09-22",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "0.80",
+              "unit": "mg/dL",
+              "referenceRange": "0.51 - 0.95",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "99",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "14",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "95",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.4",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "23",
+              "unit": "U/L",
+              "referenceRange": "7 - 56",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "22",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "178",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "65",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "98",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "115",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "14.2",
+              "unit": "g/dL",
+              "referenceRange": "12.0 - 15.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "42.5",
+              "unit": "%",
+              "referenceRange": "36.0 - 46.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "6.9",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "4.75",
+              "unit": "10^6/uL",
+              "referenceRange": "4.0 - 5.2",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "280",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.4",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.28",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.5",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "140",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.7",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "48",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "610",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "98",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "62",
+              "unit": "ng/mL",
+              "referenceRange": "11 - 307",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "4.2",
+              "unit": "mg/dL",
+              "referenceRange": "2.5 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.5",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.6",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.9",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "chiara-labs-2024-09-22.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-09-22T11:20:00.000Z",
+            "pdfPages": 3,
+            "notes": "Continued excellent control - all values in normal range"
+          }
+        }
+      ]
+    },
+    "patient_causius": {
+      "id": "patient_causius",
+      "name": "Causio",
+      "dateOfBirth": "1990-01-01",
+      "gender": "M",
+      "bloodType": "O+",
+      "allergies": [],
+      "medications": [
+        {
+          "name": "Amlodipine",
+          "dosage": "5mg once daily",
+          "startDate": "2022-03-01",
+          "prescriber": "Dr. Ferrari"
+        },
+        {
+          "name": "Atorvastatin",
+          "dosage": "20mg once daily",
+          "startDate": "2022-05-15",
+          "prescriber": "Dr. Ferrari"
+        }
+      ],
+      "conditions": [
+        {
+          "name": "Hypertension",
+          "diagnosedDate": "2022-02-01",
+          "status": "active"
+        },
+        {
+          "name": "Hyperlipidemia",
+          "diagnosedDate": "2022-04-01",
+          "status": "active"
+        }
+      ],
+      "labResults": [
+        {
+          "date": "2022-01-10",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.0",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "88",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "20",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "92",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.4",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "35",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "32",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "265",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "38",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "low",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "185",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "210",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.2",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "45.5",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "7.5",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.1",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "245",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.2",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.15",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.1",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "139",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.2",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "28",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "low",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "380",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "125",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "95",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "6.8",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.0",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.2",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2022-01-10.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2022-01-10T08:30:00.000Z",
+            "pdfPages": 3,
+            "notes": "Initial screening - elevated cholesterol and triglycerides"
+          }
+        },
+        {
+          "date": "2022-07-15",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.05",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "85",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "22",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "95",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.5",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "38",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "35",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "245",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "42",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "165",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "190",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.5",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "46.2",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "7.8",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.15",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "255",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.4",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.18",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.3",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "140",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.3",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "32",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "420",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "118",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "88",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "6.5",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.1",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.3",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2022-07-15.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2022-07-15T10:00:00.000Z",
+            "pdfPages": 3,
+            "notes": "Started Atorvastatin - modest improvement in lipids"
+          }
+        },
+        {
+          "date": "2023-01-20",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.12",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "82",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "24",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "98",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.6",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "32",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "30",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "205",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "45",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "135",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "165",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.8",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "47.0",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "8.0",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.2",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "265",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.3",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.22",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.5",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "141",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.4",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "35",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "450",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "115",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "82",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "6.2",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.2",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.4",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2023-01-20.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2023-01-20T09:15:00.000Z",
+            "pdfPages": 3,
+            "notes": "Continued lipid improvement, but kidney function declining"
+          }
+        },
+        {
+          "date": "2023-07-25",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.25",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "75",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "26",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "96",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.5",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "30",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "28",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "188",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "48",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "115",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "145",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.6",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "46.5",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "7.6",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.18",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "258",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.5",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.25",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.6",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "140",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.5",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "38",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "480",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "122",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "78",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "5.8",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.3",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.5",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2023-07-25.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2023-07-25T11:30:00.000Z",
+            "pdfPages": 3,
+            "notes": "Lipids improved, but eGFR continues to decline - monitor closely"
+          }
+        },
+        {
+          "date": "2024-01-18",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.38",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "68",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "28",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "94",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.4",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "28",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "26",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "175",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "52",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "102",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "132",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.4",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "46.0",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "7.2",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.12",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "250",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.6",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.28",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.8",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "139",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.3",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "42",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "510",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "120",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "72",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "5.5",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.1",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.3",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2024-01-18.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-01-18T08:45:00.000Z",
+            "pdfPages": 3,
+            "notes": "Creatinine elevated, eGFR at 68 - CKD stage 2. Referral to nephrology recommended."
+          }
+        },
+        {
+          "date": "2024-04-22",
+          "labTests": [
+            {
+              "name": "Creatinine",
+              "value": "1.42",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "65",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "30",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Glucose (Fasting)",
+              "value": "93",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.3",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "ALT (SGPT)",
+              "value": "26",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "AST (SGOT)",
+              "value": "25",
+              "unit": "U/L",
+              "referenceRange": "10 - 40",
+              "flag": "normal",
+              "category": "liver"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "168",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "55",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "95",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "125",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.2",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Hematocrit",
+              "value": "45.8",
+              "unit": "%",
+              "referenceRange": "38.0 - 50.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "WBC",
+              "value": "6.8",
+              "unit": "10^3/uL",
+              "referenceRange": "4.5 - 11.0",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "RBC",
+              "value": "5.08",
+              "unit": "10^6/uL",
+              "referenceRange": "4.3 - 5.9",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "Platelets",
+              "value": "245",
+              "unit": "10^3/uL",
+              "referenceRange": "150 - 400",
+              "flag": "normal",
+              "category": "blood"
+            },
+            {
+              "name": "TSH",
+              "value": "2.7",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Free T4",
+              "value": "1.30",
+              "unit": "ng/dL",
+              "referenceRange": "0.8 - 1.8",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Potassium",
+              "value": "4.9",
+              "unit": "mEq/L",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Sodium",
+              "value": "138",
+              "unit": "mEq/L",
+              "referenceRange": "136 - 145",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Calcium",
+              "value": "9.2",
+              "unit": "mg/dL",
+              "referenceRange": "8.5 - 10.2",
+              "flag": "normal",
+              "category": "electrolyte"
+            },
+            {
+              "name": "Vitamin D",
+              "value": "45",
+              "unit": "ng/mL",
+              "referenceRange": "30 - 100",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Vitamin B12",
+              "value": "540",
+              "unit": "pg/mL",
+              "referenceRange": "232 - 1245",
+              "flag": "normal",
+              "category": "vitamin"
+            },
+            {
+              "name": "Iron",
+              "value": "118",
+              "unit": "mcg/dL",
+              "referenceRange": "50 - 170",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Ferritin",
+              "value": "68",
+              "unit": "ng/mL",
+              "referenceRange": "23 - 336",
+              "flag": "normal",
+              "category": "mineral"
+            },
+            {
+              "name": "Uric Acid",
+              "value": "5.2",
+              "unit": "mg/dL",
+              "referenceRange": "4.0 - 7.0",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Total Protein",
+              "value": "7.0",
+              "unit": "g/dL",
+              "referenceRange": "6.0 - 8.3",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Albumin",
+              "value": "4.2",
+              "unit": "g/dL",
+              "referenceRange": "3.5 - 5.0",
+              "flag": "normal",
+              "category": "protein"
+            },
+            {
+              "name": "Globulin",
+              "value": "2.8",
+              "unit": "g/dL",
+              "referenceRange": "2.0 - 3.5",
+              "flag": "normal",
+              "category": "protein"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2024-04-22.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-04-22T10:15:00.000Z",
+            "pdfPages": 3,
+            "notes": "eGFR continues slow decline. All lipids now in normal range. BP well controlled."
+          }
+        }
+      ]
+    }
+  },
+  "lastProcessed": 2,
+  "metadata": {
+    "schema": "multi-patient-v1",
+    "exportDate": "2026-04-07",
+    "totalPatients": 2
+  }
+}

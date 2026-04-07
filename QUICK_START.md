@@ -1,149 +1,125 @@
-# Quick Start Guide - Lab Values Tracker
+# Quick Start Guide - 5 Minute Deployment
 
-## What You Have
+Get Analisi Tracker deployed to production in under 5 minutes.
 
-A fully functional web application that visualizes lab test results from 7 PDF reports with:
-- **60+ lab parameters** tracked over time
-- **Interactive charts** with temporal visualization
-- **Dashed lines** for measurement gaps (not interpolated)
-- **Healthy range indicators** for each value
-- **Color-coded alerts** for out-of-range values
+## Prerequisites
 
-## How to Use
-
-### 1. Open the Application
-
-The application is currently running at:
-```
-http://localhost:3000
-```
-
-Open this URL in your web browser.
-
-### 2. View Patient Information
-
-At the top, you'll see:
-- Patient name: CAUSIO CHIARA
-- Date of birth: 12/10/2000
-- Gender: FEMALE
-
-### 3. Select Lab Values to Display
-
-Click **"Show Selector"** to see all available lab values:
-- Use the **search bar** to find specific values (e.g., "Creatinina", "Emoglobina")
-- **Check/uncheck** boxes to show/hide specific values
-- Use **"Select All"** to display everything
-- Use **"Clear All"** to start fresh
-
-### 4. Read the Charts
-
-Each chart shows:
-
-**Lines:**
-- 🔵 **Blue solid line** = Actual measurements
-- ⚪ **Gray dashed line** = Gap between measurements (no data)
-
-**Shaded Areas:**
-- 🟢 **Green area** = Normal/healthy range
-- 🟢 **Green dashed lines** = Upper and lower limits of normal range
-
-**Data Points:**
-- 🔵 **Blue dots** = Values within normal range
-- 🔴 **Red dots** = Values outside normal range (ALERT!)
-
-### 5. See Details
-
-**Hover over any point** on the chart to see:
-- Exact date
-- Measured value with unit
-- Normal range
-- Any notes
-
-**Scroll below each chart** to see:
-- Summary cards for all measurements
-- Color-coded by status (green = normal, red = abnormal, gray = not measured)
-
-## Key Features
-
-### Temporal Gaps (Dashed Lines)
-When a lab value wasn't measured at a particular date:
-- ✅ Shows dashed line connecting previous and next measurements
-- ✅ Preserves accurate timeline
-- ❌ Does NOT infer or guess values
-- ❌ Does NOT set missing values to 0
-
-### Example Chart Interpretation
-
-If you see:
-```
-Jan 2024: Creatinina = 1.0 mg/dL (blue dot, normal)
-         [gray dashed line]
-Jun 2025: Creatinina = 2.06 mg/dL (red dot, HIGH)
-```
-
-This means:
-- January measurement was normal
-- No measurements between Jan and Jun
-- June measurement is elevated (outside normal range)
-
-## Data Coverage
-
-Your data spans **February 2023 to December 2025** with measurements from:
-1. Feb 14, 2023
-2. Nov 20, 2023
-3. Jan 29, 2024
-4. Jun 11, 2025
-5. Oct 20, 2025
-6. Nov 13, 2025
-7. Dec 19, 2025
-
-## Most Important Values to Monitor
-
-Based on the data, key values for kidney transplant monitoring:
-
-1. **Creatininemia** - Kidney function marker
-2. **eGFR** - Glomerular filtration rate
-3. **Proteinuria 24h** - Protein in urine
-4. **Tacrolemia** - Immunosuppressant level
-5. **Emoglobina** - Anemia monitoring
-6. **Calcemia** - Calcium levels
-7. **Fosforemia** - Phosphorus levels
-8. **i-PTH** - Parathyroid hormone
-
-## Tips for Best Experience
-
-1. **Start with key values**: Select 3-4 important values first
-2. **Use search**: Type "Creat" to find all creatinine-related values
-3. **Look for trends**: Red dots show when values were out of range
-4. **Check tooltips**: Hover for exact measurements and ranges
-5. **Desktop recommended**: Better visualization on larger screens
-
-## Stopping the Application
-
-When you're done:
-```bash
-# Press Ctrl+C in the terminal where the app is running
-# Or close the terminal window
-```
-
-## Restarting Later
-
-To run the application again:
-```bash
-cd ~/lab-values-tracker/lab-tracker
-npm run dev
-```
-
-Then open http://localhost:3000 in your browser.
-
-## Need Help?
-
-Check the full README.md for:
-- Technical details
-- Troubleshooting
-- Feature descriptions
-- Data structure documentation
+- Node.js 18+ installed
+- Git account
+- Domain name (optional)
 
 ---
 
-**Remember**: This application runs locally on your computer. No data is sent to external servers.
+## Option A: Deploy to Vercel (Recommended - 5 minutes)
+
+### Step 1: Install Vercel CLI (30 seconds)
+
+```bash
+npm install -g vercel
+```
+
+### Step 2: Login to Vercel (30 seconds)
+
+```bash
+vercel login
+```
+
+Follow the browser authentication prompts.
+
+### Step 3: Deploy Project (2 minutes)
+
+```bash
+cd /path/to/analisi-tracker
+vercel
+```
+
+### Step 4: Configure Environment Variables (1 minute)
+
+Go to https://vercel.com/dashboard → Your Project → Settings → Environment Variables
+
+Add variables (see .env.production.example for full list)
+
+### Step 5: Deploy to Production (1 minute)
+
+```bash
+vercel --prod
+```
+
+Done! Your app is live at https://analisi-tracker.vercel.app
+
+---
+
+## Option B: Deploy to Docker (15 minutes)
+
+### Step 1: Prepare Server (5 minutes)
+
+Choose a provider and create a server with:
+- 2 CPU cores
+- 4GB RAM  
+- 20GB SSD
+- Ubuntu 20.04 or 22.04
+
+### Step 2: Install Docker (3 minutes)
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+### Step 3: Clone & Configure (3 minutes)
+
+```bash
+cd /opt
+sudo git clone https://github.com/your-username/analisi-tracker.git
+cd analisi-tracker
+cp .env.production.example .env.production
+nano .env.production  # Edit with your values
+```
+
+### Step 4: Deploy (2 minutes)
+
+```bash
+docker-compose up -d
+```
+
+### Step 5: Verify (2 minutes)
+
+```bash
+curl http://localhost:3000/health
+```
+
+---
+
+## Post-Deployment Setup
+
+1. **Set up monitoring** (Sentry, uptime monitoring)
+2. **Configure automated backups** (add to crontab)
+3. **Set up domain and SSL** (Let's Encrypt)
+4. **Run health check** (./scripts/health-check.sh)
+
+See DEPLOYMENT_GUIDE.md for detailed instructions.
+
+---
+
+## Common Issues
+
+**Port already in use:** Change PORT in .env.production
+**Redis connection refused:** Check docker-compose ps redis
+**Permission denied:** chmod +x scripts/*.sh
+
+---
+
+## Verification Checklist
+
+- [ ] Health endpoint returns 200
+- [ ] API endpoints work
+- [ ] Frontend loads
+- [ ] Redis is responsive
+- [ ] No errors in logs
+- [ ] SSL valid (if using domain)
+
+---
+
+**Congratulations!** 🎉 Your Analisi Tracker is now in production.
+
+**Next:** Read DEPLOYMENT_GUIDE.md for detailed configuration.

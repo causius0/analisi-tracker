@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#0d9488" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Analisi" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Analisi Tracker" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Advanced medical lab test analytics platform with trend analysis, correlation detection, and predictive insights" />
+    <meta name="keywords" content="medical, analytics, lab tests, health tracking, trends" />
+    <meta name="author" content="Analisi Tracker" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Analisi Tracker - Medical Lab Analytics" />
+    <meta property="og:description" content="Track and analyze your lab test results with advanced analytics" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Analisi Tracker" />
+    <meta name="twitter:description" content="Advanced medical lab test analytics" />
+    <meta name="twitter:image" content="/icons/icon-512x512.png" />
+
+    <!-- Preconnect to API -->
+    <link rel="preconnect" href="http://localhost:3000" crossorigin />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="http://localhost:3000" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>Analisi Tracker</title>
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-900">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Root element -->
+    <div id="root"></div>
+
+    <!-- Service Worker Registration -->
+    <script>
+      // Check if service workers are supported
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {
+              console.log('[PWA] Service Worker registered:', registration);
+
+              // Check for updates
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                if (newWorker) {
+                  newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      // New content available
+                      if (confirm('New version available. Refresh to update?')) {
+                        window.location.reload();
+                      }
+                    }
+                  });
+                }
+              });
+            })
+            .catch((error) => {
+              console.error('[PWA] Service Worker registration failed:', error);
+            });
+        });
+      }
+
+      // Listen for online/offline events
+      window.addEventListener('online', () => {
+        console.log('[PWA] App is online');
+        document.body.classList.remove('offline');
+      });
+
+      window.addEventListener('offline', () => {
+        console.log('[PWA] App is offline');
+        document.body.classList.add('offline');
+      });
+
+      // Initialize online status
+      if (!navigator.onLine) {
+        document.body.classList.add('offline');
+      }
+    </script>
+
+    <!-- Offline indicator styles -->
+    <style>
+      body.offline::before {
+        content: 'You\'re offline - Some features may be unavailable';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #f59e0b;
+        color: white;
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 9999;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      body.offline {
+        padding-top: 40px;
+      }
+    </style>
+  </body>
+</html>

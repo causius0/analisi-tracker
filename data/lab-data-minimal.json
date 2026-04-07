@@ -1,0 +1,253 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-04-07T00:00:00.000Z",
+  "updatedAt": "2026-04-07T00:00:00.000Z",
+  "patients": {
+    "patient_chiara": {
+      "id": "patient_chiara",
+      "name": "Chiara",
+      "dateOfBirth": "1995-05-15",
+      "gender": "F",
+      "bloodType": "A+",
+      "allergies": [
+        {
+          "name": "Penicillin",
+          "severity": "moderate",
+          "reaction": "Rash"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Metformin",
+          "dosage": "500mg twice daily",
+          "startDate": "2023-06-01",
+          "prescriber": "Dr. Bianchi"
+        }
+      ],
+      "conditions": [
+        {
+          "name": "Type 2 Diabetes",
+          "diagnosedDate": "2023-05-01",
+          "status": "active"
+        }
+      ],
+      "labResults": [
+        {
+          "date": "2024-03-20",
+          "labTests": [
+            {
+              "name": "Glucose (Fasting)",
+              "value": "105",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "HbA1c",
+              "value": "5.9",
+              "unit": "%",
+              "referenceRange": "4.0 - 5.7",
+              "flag": "high",
+              "category": "metabolic"
+            },
+            {
+              "name": "Creatinine",
+              "value": "0.88",
+              "unit": "mg/dL",
+              "referenceRange": "0.51 - 0.95",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "95",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "normal",
+              "category": "kidney"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "195",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "58",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "118",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "135",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "TSH",
+              "value": "2.6",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "14.1",
+              "unit": "g/dL",
+              "referenceRange": "12.0 - 15.5",
+              "flag": "normal",
+              "category": "blood"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "chiara-labs-2024-03-20.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-03-20T14:15:00.000Z",
+            "pdfPages": 2,
+            "notes": "Quarterly diabetes follow-up"
+          }
+        }
+      ]
+    },
+    "patient_causius": {
+      "id": "patient_causius",
+      "name": "Causio",
+      "dateOfBirth": "1990-01-01",
+      "gender": "M",
+      "bloodType": "O+",
+      "allergies": [],
+      "medications": [
+        {
+          "name": "Amlodipine",
+          "dosage": "5mg once daily",
+          "startDate": "2022-03-01",
+          "prescriber": "Dr. Ferrari"
+        }
+      ],
+      "conditions": [
+        {
+          "name": "Hypertension",
+          "diagnosedDate": "2022-02-01",
+          "status": "active"
+        }
+      ],
+      "labResults": [
+        {
+          "date": "2024-01-18",
+          "labTests": [
+            {
+              "name": "Glucose (Fasting)",
+              "value": "94",
+              "unit": "mg/dL",
+              "referenceRange": "70 - 100",
+              "flag": "normal",
+              "category": "metabolic"
+            },
+            {
+              "name": "Creatinine",
+              "value": "1.38",
+              "unit": "mg/dL",
+              "referenceRange": "0.74 - 1.35",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "eGFR",
+              "value": "68",
+              "unit": "mL/min/1.73m²",
+              "referenceRange": ">= 90",
+              "flag": "low",
+              "category": "kidney"
+            },
+            {
+              "name": "BUN",
+              "value": "28",
+              "unit": "mg/dL",
+              "referenceRange": "6 - 20",
+              "flag": "high",
+              "category": "kidney"
+            },
+            {
+              "name": "Total Cholesterol",
+              "value": "175",
+              "unit": "mg/dL",
+              "referenceRange": "< 200",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "HDL Cholesterol",
+              "value": "52",
+              "unit": "mg/dL",
+              "referenceRange": "> 40",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "LDL Cholesterol",
+              "value": "102",
+              "unit": "mg/dL",
+              "referenceRange": "< 100",
+              "flag": "high",
+              "category": "lipid"
+            },
+            {
+              "name": "Triglycerides",
+              "value": "132",
+              "unit": "mg/dL",
+              "referenceRange": "< 150",
+              "flag": "normal",
+              "category": "lipid"
+            },
+            {
+              "name": "TSH",
+              "value": "2.6",
+              "unit": "mIU/L",
+              "referenceRange": "0.4 - 4.0",
+              "flag": "normal",
+              "category": "thyroid"
+            },
+            {
+              "name": "Hemoglobin",
+              "value": "15.4",
+              "unit": "g/dL",
+              "referenceRange": "13.5 - 17.5",
+              "flag": "normal",
+              "category": "blood"
+            }
+          ],
+          "metadata": {
+            "sourceFile": "causius-labs-2024-01-18.pdf",
+            "labName": "Laboratorio Analisi Cliniche",
+            "processedAt": "2024-01-18T08:45:00.000Z",
+            "pdfPages": 2,
+            "notes": "Annual physical - kidney function monitoring"
+          }
+        }
+      ]
+    }
+  },
+  "lastProcessed": 0,
+  "metadata": {
+    "schema": "multi-patient-v1",
+    "exportDate": "2026-04-07",
+    "totalPatients": 2
+  }
+}

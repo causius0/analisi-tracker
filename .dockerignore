@@ -1,0 +1,65 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env.local
+.env.development
+.env.test
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+docs
+
+# CI/CD
+.github
+
+# Tests
+coverage
+.nyc_output
+*.test.js
+*.spec.js
+__tests__
+
+# Build artifacts (will be built in container)
+dist
+build
+*.tgz
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+.tmp
+
+# Docker files
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Vercel files
+vercel.json
+.vercelignore
+
+# Other
+.editorconfig
+.eslintrc*
+.prettierrc*

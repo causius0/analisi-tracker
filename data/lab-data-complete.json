@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-04-06T00:00:00.000Z",
+  "updatedAt": "2026-04-06T00:00:00.000Z",
+  "patients": {
+    "patient_chiara": {
+      "id": "patient_chiara",
+      "name": "Chiara",
+      "dateOfBirth": "1995-05-15",
+      "gender": "F",
+      "labResults": []
+    },
+    "patient_causius": {
+      "id": "patient_causius",
+      "name": "Causio",
+      "dateOfBirth": "1990-01-01",
+      "gender": "M",
+      "labResults": []
+    }
+  },
+  "lastProcessed": 0,
+  "metadata": {
+    "schema": "multi-patient-v1",
+    "exportDate": "2026-04-06",
+    "totalPatients": 2
+  }
+}

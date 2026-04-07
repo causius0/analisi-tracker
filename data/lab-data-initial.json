@@ -1,0 +1,363 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-04-07T00:00:00.000Z",
+  "updatedAt": "2026-04-07T00:00:00.000Z",
+  "patients": {
+    "patient_chiara": {
+      "id": "patient_chiara",
+      "name": "Chiara",
+      "dateOfBirth": "1995-05-15",
+      "gender": "F",
+      "labResults": [
+        {
+          "id": "chiara-creatinine-1",
+          "testName": "Creatinine",
+          "value": 0.85,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-01-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-creatinine-2",
+          "testName": "Creatinine",
+          "value": 0.88,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-02-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-creatinine-3",
+          "testName": "Creatinine",
+          "value": 0.82,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-03-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-glucose-1",
+          "testName": "Glucose (Fasting)",
+          "value": 85,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-01-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-glucose-2",
+          "testName": "Glucose (Fasting)",
+          "value": 88,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-02-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-glucose-3",
+          "testName": "Glucose (Fasting)",
+          "value": 86,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-03-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-egfr-1",
+          "testName": "eGFR",
+          "value": 95,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-01-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-egfr-2",
+          "testName": "eGFR",
+          "value": 98,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-02-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "chiara-egfr-3",
+          "testName": "eGFR",
+          "value": 102,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-03-15T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        }
+      ]
+    },
+    "patient_causius": {
+      "id": "patient_causius",
+      "name": "Causio",
+      "dateOfBirth": "1990-01-01",
+      "gender": "M",
+      "labResults": [
+        {
+          "id": "causio-creatinine-1",
+          "testName": "Creatinine",
+          "value": 1.2,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-01-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-creatinine-2",
+          "testName": "Creatinine",
+          "value": 1.1,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-02-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-creatinine-3",
+          "testName": "Creatinine",
+          "value": 1.0,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-03-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-creatinine-4",
+          "testName": "Creatinine",
+          "value": 0.95,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 0.7,
+            "upper": 1.3
+          },
+          "date": "2024-04-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-glucose-1",
+          "testName": "Glucose (Fasting)",
+          "value": 110,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-01-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-glucose-2",
+          "testName": "Glucose (Fasting)",
+          "value": 105,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-02-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-glucose-3",
+          "testName": "Glucose (Fasting)",
+          "value": 98,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-03-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-glucose-4",
+          "testName": "Glucose (Fasting)",
+          "value": 92,
+          "unit": "mg/dL",
+          "referenceRange": {
+            "lower": 70,
+            "upper": 100
+          },
+          "date": "2024-04-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-egfr-1",
+          "testName": "eGFR",
+          "value": 75,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-01-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-egfr-2",
+          "testName": "eGFR",
+          "value": 78,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-02-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-egfr-3",
+          "testName": "eGFR",
+          "value": 82,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-03-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-egfr-4",
+          "testName": "eGFR",
+          "value": 88,
+          "unit": "mL/min/1.73m²",
+          "referenceRange": {
+            "lower": 90,
+            "upper": 120
+          },
+          "date": "2024-04-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": false
+        },
+        {
+          "id": "causio-hba1c-1",
+          "testName": "Hemoglobin A1c",
+          "value": 6.2,
+          "unit": "%",
+          "referenceRange": {
+            "lower": 4.0,
+            "upper": 5.7
+          },
+          "date": "2024-01-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        },
+        {
+          "id": "causio-hba1c-2",
+          "testName": "Hemoglobin A1c",
+          "value": 6.0,
+          "unit": "%",
+          "referenceRange": {
+            "lower": 4.0,
+            "upper": 5.7
+          },
+          "date": "2024-03-01T00:00:00Z",
+          "facility": "Local Lab",
+          "isAbnormal": true
+        }
+      ]
+    }
+  },
+  "lastProcessed": 0,
+  "metadata": {
+    "schema": "multi-patient-v1",
+    "exportDate": "2026-04-07",
+    "totalPatients": 2,
+    "totalLabResults": 26
+  },
+  "context": {
+    "medications": [
+      {
+        "patientId": "patient_causius",
+        "name": "Metformin",
+        "startDate": "2024-02-01T00:00:00Z",
+        "dosage": "500mg twice daily",
+        "notes": "Started for glucose management"
+      },
+      {
+        "patientId": "patient_causius",
+        "name": "Lisinopril",
+        "startDate": "2024-02-01T00:00:00Z",
+        "dosage": "10mg once daily",
+        "notes": "Started for kidney protection"
+      }
+    ],
+    "events": [
+      {
+        "patientId": "patient_causius",
+        "name": "Dietary changes",
+        "date": "2024-02-15T00:00:00Z",
+        "description": "Started low-carb diet to improve glucose levels",
+        "impact": "positive"
+      },
+      {
+        "patientId": "patient_causius",
+        "name": "Exercise program",
+        "date": "2024-03-01T00:00:00Z",
+        "description": "Started walking 30 minutes daily",
+        "impact": "positive"
+      }
+    ]
+  }
+}

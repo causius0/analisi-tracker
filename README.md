@@ -1,213 +1,212 @@
-# Lab Values Tracker
+# Analisi Tracker - Advanced Medical Analytics Platform
 
-A dynamic React-based web application for visualizing and tracking laboratory test results over time.
+A comprehensive analytics engine for medical lab test data with **multi-patient support**, **PDF processing**, **AI-powered extraction**, and **validation**.
+
+## 🎯 New Features (April 2026)
+
+### Medical PDF Processing System ✨
+- **Multi-Patient Support**: Manage lab data for multiple patients in one system
+- **AI-Powered Extraction**: Extract lab results from PDFs using Gemini 1.5 Flash
+- **OCR Support**: Process scanned PDFs with Tesseract.js
+- **Data Validation**: Italian medical reference ranges with automatic flag detection
+- **Quality Control**: Extraction reports with success rates and issue tracking
+- **Patient Selection UI**: Easy switching between patients
+
+**Quick Start**:
+```bash
+npm install
+export GEMINI_API_KEY="your-api-key"  # Optional but recommended
+npm run process:pdfs
+```
+
+**Documentation**:
+- `docs/QUICK_START.md` - 5-minute setup guide
+- `docs/PDF_PROCESSING_GUIDE.md` - Complete system guide
+- `docs/IMPLEMENTATION_SUMMARY.md` - Technical details
 
 ## Features
 
-### Data Visualization
-- **Interactive Line Charts**: Each lab value is displayed on its own chart with temporal progression
-- **Dashed Lines for Gaps**: When measurements are not taken, the chart shows dashed lines connecting available data points (without inferring or setting values to 0)
-- **Healthy Range Indicators**: Visual representation of normal ranges with color-coded areas
-- **Out-of-Range Highlighting**: Values outside the normal range are highlighted in red
+### 1. Trend Analysis
+- Direction detection (improving, worsening, stable)
+- Rate of change calculations (absolute and percentage)
+- Statistical significance testing (Mann-Kendall, linear regression)
+- Trend strength indicators (R², p-values)
+- Seasonal pattern detection
 
-### Dashboard Controls
-- **Value Selection**: Choose which lab values to display from a comprehensive list
-- **Search Functionality**: Quick search to find specific lab values
-- **Select All/Clear All**: Bulk selection controls
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
+### 2. Correlation Analysis
+- Pairwise correlation matrix (Pearson, Spearman)
+- Time-lagged correlations (lead/lag relationships)
+- Partial correlations (controlling for confounders)
+- Dynamic correlation over rolling windows
+- Statistical significance testing
 
-### Data Details
-- **Detailed Tooltips**: Hover over data points to see exact values, dates, and normal ranges
-- **Value Cards**: Summary cards below each chart showing all measurements with color coding
-- **Patient Information**: Display of patient demographics
+### 3. Anomaly Detection
+- Z-score based outliers (>3 standard deviations)
+- Rate-of-change anomalies (sudden spikes/drops)
+- Contextual anomalies (medications, events)
+- Persistent abnormality detection
+- Multivariate anomaly detection
 
-## Data Structure
+### 4. Predictive Analytics
+- ARIMA time series forecasting
+- Linear regression predictions
+- Risk stratification (low/medium/high)
+- Personalized reference ranges
+- Early warning alerts
+- What-if scenario modeling
 
-The application uses a JSON file (`lab-data.json`) with the following structure:
+### 5. Statistical Features
+- Descriptive statistics (mean, median, SD, percentiles)
+- Distribution analysis (normality tests, skewness)
+- Time in target range (diabetes metrics)
+- Variability metrics (CV, SD)
+- Composite scores (kidney function, liver health)
 
-```json
-{
-  "patient": {
-    "name": "CAUSIO CHIARA",
-    "dateOfBirth": "2000-10-12",
-    "gender": "FEMALE"
-  },
-  "labTests": [
-    {
-      "date": "2025-06-11",
-      "source": "causio 1.pdf",
-      "values": {
-        "Creatininemia": {
-          "value": 2.06,
-          "unit": "mg/dL",
-          "range": { "min": 0.5, "max": 0.8 }
-        }
-      }
-    }
-  ]
-}
+## Architecture
+
 ```
-
-### Extracted Data Summary
-
-The application has successfully extracted data from 7 PDF lab reports spanning from **February 2023 to December 2025**:
-
-1. **causioVISt.pdf** (Feb 14, 2023)
-2. **causioviss.pdf** (Nov 20, 2023)
-3. **causio0.pdf** (Jan 29, 2024)
-4. **causio 1.pdf** (Jun 11, 2025)
-5. **causio relazione.pdf** (Oct 20, 2025 & Nov 13, 2025)
-6. **causio2.pdf** (Dec 19, 2025)
-7. **CAUSIOvis.pdf** (Dec 19, 2025)
-
-**Total Lab Values Tracked**: 60+ unique parameters including:
-- Renal function markers (Creatininemia, Azotemia, eGFR, Clearance Creatinina)
-- Complete blood count (Emoglobina, Leucociti, Piastrine, etc.)
-- Electrolytes (Sodio, Potassio, Calcio, Fosforo)
-- Lipid panel (Colesterolo totale, HDL, LDL, Trigliceridi)
-- Liver function (AST, ALT, GGT, Bilirubina)
-- Metabolic markers (Glucosio, Urato, Proteine totali, Albumina)
-- Specialized markers (i-PTH, vitamina D, Tacrolemia)
+analisi-tracker/
+├── server/
+│   ├── index.js                 # Express server
+│   ├── analytics/
+│   │   ├── engine.js           # Core calculation engine
+│   │   ├── trends.js           # Trend analysis
+│   │   ├── correlation.js      # Correlation calculations
+│   │   ├── anomalies.js        # Anomaly detection
+│   │   ├── prediction.js       # Predictive models
+│   │   └── statistics.js       # Statistical functions
+│   ├── api/
+│   │   ├── analytics.js        # Analytics endpoints
+│   │   ├── labs.js             # Lab data CRUD
+│   │   └── insights.js         # Insights endpoints
+│   ├── cache/
+│   │   └── cache-manager.js    # Redis caching
+│   └── jobs/
+│       └── analytics-queue.js  # Background processing
+├── client/                      # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── insights/
+│   │   │   ├── trends/
+│   │   │   ├── correlations/
+│   │   │   └── alerts/
+│   │   └── services/
+│   │       └── analytics.js    # API client
+├── data/
+│   └── sample-data.json        # Sample lab data
+└── tests/
+    └── analytics.test.js
+```
 
 ## Installation
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
-
-### Setup
-
-1. Navigate to the project directory:
 ```bash
-cd ~/lab-values-tracker/lab-tracker
-```
-
-2. Install dependencies (already done):
-```bash
+# Install dependencies
 npm install
-```
 
-3. The lab data is already in place at `public/lab-data.json`
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
 
-## Running the Application
-
-### Development Mode
-```bash
+# Start development server
 npm run dev
-```
 
-The application will be available at:
-- Local: http://localhost:3000
-- Network: http://10.0.0.146:3000
-
-### Production Build
-```bash
+# Build for production
 npm run build
+
+# Start production server
 npm start
 ```
 
-## Usage Guide
+## API Endpoints
 
-### Selecting Lab Values
-1. Click "Show Selector" to expand the value selection panel
-2. Use the search bar to filter lab values by name
-3. Click checkboxes to select/deselect individual values
-4. Use "Select All" to show all available values
-5. Use "Clear All" to hide all charts
+### Analytics
+- `GET /api/analytics/trends/:labTestId` - Get trend analysis
+- `GET /api/analytics/correlations` - Get correlation matrix
+- `GET /api/analytics/anomalies/:labTestId` - Detect anomalies
+- `GET /api/analytics/predictions/:labTestId` - Get predictions
+- `GET /api/analytics/statistics/:labTestId` - Get descriptive statistics
+- `GET /api/analytics/insights` - Get all insights
 
-### Reading the Charts
-- **Blue solid line**: Actual measured values
-- **Gray dashed line**: Connection between measurements when no data is available (gap periods)
-- **Green shaded area**: Normal/healthy range for the value
-- **Green dashed lines**: Upper and lower bounds of normal range
-- **Blue dots**: Values within normal range
-- **Red dots**: Values outside normal range
+### Lab Data
+- `GET /api/labs` - Get all lab tests
+- `POST /api/labs` - Add lab test results
+- `PUT /api/labs/:id` - Update lab test
+- `DELETE /api/labs/:id` - Delete lab test
 
-### Understanding Data Points
-- Click on any point on the chart to see detailed information in a tooltip
-- Below each chart, cards show all measurements with color coding:
-  - **Green**: Within normal range
-  - **Red**: Outside normal range
-  - **Gray**: Not measured
+### Export
+- `GET /api/export/analytics/:labTestId` - Export as CSV
+- `GET /api/export/analytics/:labTestId` - Export as JSON
 
-## Technical Stack
+## Usage Example
 
-- **Framework**: Next.js 16 with React 19
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Charts**: Recharts
-- **Date Handling**: date-fns
+```javascript
+// Get trend analysis for a specific lab test
+const response = await fetch('/api/analytics/trends/creatinine');
+const trends = await response.json();
 
-## Project Structure
-
-```
-lab-tracker/
-├── app/
-│   ├── page.tsx           # Main page component
-│   └── layout.tsx         # Root layout
-├── components/
-│   ├── LabDashboard.tsx   # Main dashboard component
-│   ├── LabChart.tsx       # Individual chart component
-│   └── ValueSelector.tsx  # Value selection interface
-├── public/
-│   └── lab-data.json      # Lab test data
-└── package.json
+console.log(trends.direction); // "improving" | "worsening" | "stable"
+console.log(trends.rateOfChange.absolute); // -0.15 mg/dL per month
+console.log(trends.rateOfChange.percentage); // -8.3%
+console.log(trends.significance.pValue); // 0.042
+console.log(trends.strength.rSquared); // 0.87
 ```
 
-## Features in Detail
+## Testing
 
-### 1. Temporal Visualization with Gaps
-The application intelligently handles missing data:
-- Does NOT interpolate or infer values
-- Does NOT set missing values to 0
-- DOES show dashed lines to indicate temporal gaps between measurements
-- Maintains accurate representation of when tests were actually performed
+Comprehensive testing suite with unit, integration, and E2E tests.
 
-### 2. Healthy Range Visualization
-Each lab value displays its specific normal range:
-- Visual shaded area on the chart
-- Reference lines for min/max bounds
-- Color-coded data points (blue = normal, red = abnormal)
-- Detailed range information in tooltips
+### Run Tests
 
-### 3. Interactive Dashboard
-- Real-time chart updates based on selection
-- Responsive design for all screen sizes
-- Search and filter capabilities
-- Bulk selection controls
+```bash
+# Run all tests
+npm test
 
-## Data Privacy
-This application runs entirely in the browser. No data is sent to external servers. All processing happens client-side.
+# Run with coverage
+npm run test:unit
 
-## Browser Compatibility
-- Chrome/Edge (recommended)
-- Firefox
-- Safari
-- Modern mobile browsers
+# Run E2E tests
+npm run test:e2e
 
-## Future Enhancements
-Potential features for future versions:
-- Export charts as PNG/PDF
-- Add notes to specific measurements
-- Compare multiple lab values on the same chart
-- Statistical analysis (trends, moving averages)
-- Import new lab reports
-- Multi-patient support
+# Watch mode for development
+npm run test:watch
+```
 
-## Troubleshooting
+### Test Structure
 
-### Charts not displaying
-- Check browser console for errors
-- Ensure `lab-data.json` is in the `public` folder
-- Verify the data format matches the expected structure
+- **Unit Tests**: 70% - Individual functions and components
+- **Integration Tests**: 20% - API endpoints and module interactions
+- **E2E Tests**: 10% - Complete user workflows
 
-### Performance issues
-- Try selecting fewer values at once
-- Close other browser tabs
-- Use a modern browser
+### Coverage
+
+- **Current**: 45% (baseline)
+- **Target**: 80%+
+- **Critical Paths**: 100%
+
+### Documentation
+
+- `TESTING_GUIDE.md` - How to run and write tests
+- `TEST_STRATEGY.md` - Overall testing approach
+- `COVERAGE_REPORT.md` - Current coverage status
+- `tests/TESTING_SUMMARY.md` - Implementation summary
+
+### Technologies
+
+- **Vitest**: Unit and integration tests
+- **Playwright**: E2E tests
+- **React Testing Library**: Component testing
+- **MSW**: API mocking
+- **Faker**: Test data generation
+
+## Performance Optimizations
+
+- **Caching**: Redis-based caching for expensive computations
+- **Incremental Updates**: Only recompute new data
+- **Background Jobs**: Bull queue for async processing
+- **Lazy Loading**: Load analytics on-demand
+- **Compression**: Gzip compression for API responses
 
 ## License
-Private use only
 
-## Credits
-Built with Claude Code
+MIT

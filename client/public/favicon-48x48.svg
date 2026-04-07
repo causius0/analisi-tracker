@@ -1,0 +1,31 @@
+
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="48" height="48" fill="#ffffff" rx="7.199999999999999"/>
+
+      <!-- Medical cross (simplified) -->
+      <g transform="translate(4.800000000000001, 4.800000000000001)">
+        <!-- Chart bars -->
+        <rect x="12" y="21.6" width="3.84" height="16.799999999999997" fill="#0d9488" rx="0.96"/>
+        <rect x="18.240000000000002" y="16.799999999999997" width="3.84" height="21.6" fill="#0d9488" rx="0.96"/>
+        <rect x="24.48" y="12" width="3.84" height="26.400000000000002" fill="#0d9488" rx="0.96"/>
+        <rect x="30.72" y="7.199999999999999" width="3.84" height="31.200000000000003" fill="#0d9488" rx="0.96"/>
+
+        <!-- Trend line -->
+        <polyline
+          points="13.919999999999998,24 20.16,19.200000000000003 26.400000000000002,14.399999999999999 32.64,9.600000000000001"
+          fill="none"
+          stroke="#f59e0b"
+          stroke-width="1.44"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- Data points -->
+        <circle cx="13.919999999999998" cy="24" r="1.2000000000000002" fill="#f59e0b"/>
+        <circle cx="20.16" cy="19.200000000000003" r="1.2000000000000002" fill="#f59e0b"/>
+        <circle cx="26.400000000000002" cy="14.399999999999999" r="1.2000000000000002" fill="#f59e0b"/>
+        <circle cx="32.64" cy="9.600000000000001" r="1.2000000000000002" fill="#f59e0b"/>
+      </g>
+    </svg>
+  

@@ -1,0 +1,192 @@
+/**
+ * Authentication Middleware
+ * JWT-based authentication and authorization
+ * Note: Single-user version uses patients table instead of users
+ */
+
+import jwt from 'jsonwebtoken';
+import { patients } from '../db/index.js';
+import { eq } from 'drizzle-orm';
+import { db } from '../db/index.js';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'your-super-secret-refresh-key-change-in-production';
+
+/**
+ * Generate access token
+ */
+export function generateAccessToken(userId) {
+  return jwt.sign(
+    { userId },
+    JWT_SECRET,
+    { expiresIn: '15m' } // Access tokens expire in 15 minutes
+  );
+}
+
+/**
+ * Generate refresh token
+ */
+export function generateRefreshToken(userId) {
+  return jwt.sign(
+    { userId },
+    JWT_REFRESH_SECRET,
+    { expiresIn: '7d' } // Refresh tokens expire in 7 days
+  );
+}
+
+/**
+ * Verify access token
+ */
+export function verifyAccessToken(token) {
+  try {
+    return jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    return null;
+  }
+}
+
+/**
+ * Verify refresh token
+ */
+export function verifyRefreshToken(token) {
+  try {
+    return jwt.verify(token, JWT_REFRESH_SECRET);
+  } catch (error) {
+    return null;
+  }
+}
+
+/**
+ * Authentication middleware
+ * Verifies JWT token and attaches user to request
+ * Note: Single-user version - gets primary patient
+ */
+export async function authenticate(req, res, next) {
+  try {
+    // Get token from Authorization header
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'No valid authorization header'
+      });
+    }
+
+    const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+    // Verify token
+    const decoded = verifyAccessToken(token);
+
+    if (!decoded) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Invalid or expired token'
+      });
+    }
+
+    // Get primary patient from database (single-user version)
+    const patientRecords = await db
+      .select()
+      .from(patients)
+      .where(eq(patients.isPrimary, true))
+      .limit(1);
+
+    const patient = patientRecords[0];
+
+    if (!patient) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'No primary patient found'
+      });
+    }
+
+    // Attach patient to request
+    req.user = {
+      id: patient.id,
+      patientId: patient.id,
+      name: patient.name,
+      role: 'user',
+      isActive: true
+    };
+    next();
+
+  } catch (error) {
+    console.error('Authentication error:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: 'Authentication failed'
+    });
+  }
+}
+
+/**
+ * Authorization middleware
+ * Checks if user has required role
+ */
+export function authorize(...allowedRoles) {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Authentication required'
+      });
+    }
+
+    if (!allowedRoles.includes(req.user.role)) {
+      return res.status(403).json({
+        error: 'Forbidden',
+        message: 'Insufficient permissions',
+        requiredRoles: allowedRoles,
+        userRole: req.user.role
+      });
+    }
+
+    next();
+  };
+}
+
+/**
+ * Optional authentication middleware
+ * Attaches user if token is valid, but doesn't require it
+ * Note: Single-user version - gets primary patient
+ */
+export async function optionalAuth(req, res, next) {
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return next();
+    }
+
+    const token = authHeader.substring(7);
+    const decoded = verifyAccessToken(token);
+
+    if (!decoded) {
+      return next();
+    }
+
+    const patientRecords = await db
+      .select()
+      .from(patients)
+      .where(eq(patients.isPrimary, true))
+      .limit(1);
+
+    if (patientRecords[0]) {
+      const patient = patientRecords[0];
+      req.user = {
+        id: patient.id,
+        patientId: patient.id,
+        name: patient.name,
+        role: 'user',
+        isActive: true
+      };
+    }
+
+    next();
+
+  } catch (error) {
+    // Don't fail the request if optional auth fails
+    next();
+  }
+}
