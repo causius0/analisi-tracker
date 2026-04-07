@@ -4,6 +4,10 @@
  */
 
 import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import { mkdir, readFile, writeFile } from 'fs/promises';
+import { eq, ilike, desc } from 'drizzle-orm';
 import llmService from '../ai/llm-service.js';
 import ragService from '../ai/rag-service.js';
 import { PROMPTS } from '../ai/prompts.js';
@@ -14,6 +18,42 @@ import {
   detectAnomalies,
   performPredictiveAnalysis
 } from '../analytics/engine.js';
+
+// ── PDF upload storage setup ──────────────────────────────────────────────────
+
+const PDF_UPLOAD_DIR = process.env.PDF_UPLOAD_DIR || './uploads/pdfs';
+await mkdir(PDF_UPLOAD_DIR, { recursive: true });
+
+const pdfStorage = multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, PDF_UPLOAD_DIR),
+  filename: (_req, file, cb) =>
+    cb(null, `${crypto.randomUUID()}-${file.originalname}`),
+});
+
+const uploadPDF = multer({
+  storage: pdfStorage,
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB
+  fileFilter: (_req, file, cb) => {
+    if (file.mimetype === 'application/pdf') return cb(null, true);
+    cb(new Error('Only PDF files are allowed'));
+  },
+});
+
+// Lazy-load DB to avoid crashing when DATABASE_URL is not configured
+let _db, _pdfs, _labTestResults, _labTestDefinitions;
+async function getDB() {
+  if (!process.env.DATABASE_URL) return null;
+  if (!_db) {
+    const mod = await import('../db/index.js');
+    _db = mod.db;
+    _pdfs = mod.pdfs;
+    _labTestResults = mod.labTestResults;
+    _labTestDefinitions = mod.labTestDefinitions;
+  }
+  return { db: _db, pdfs: _pdfs, labTestResults: _labTestResults, labTestDefinitions: _labTestDefinitions };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 const router = express.Router();
 
@@ -414,38 +454,257 @@ router.post('/query', async (req, res) => {
 
 /**
  * POST /api/ai/pdf/extract
- * Extract lab values from PDF
+ * Upload a PDF, extract lab values via AI, persist results to the database.
+ *
+ * Accepts EITHER:
+ *   - multipart/form-data with field "pdf" (preferred)
+ *   - application/json with { pdfBase64, filename, patientId, options }
+ *
+ * Optional body fields (both modes):
+ *   - patientId  – UUID; when supplied, extracted values are written to lab_test_results
+ *   - options    – extraction options forwarded to pdfExtractor
  */
-router.post('/pdf/extract', async (req, res) => {
-  try {
-    // Note: This endpoint expects the PDF as multipart/form-data
-    // For simplicity, we'll assume base64 encoding in JSON body
-    const { pdfBase64, options = {} } = req.body;
+router.post('/pdf/extract', uploadPDF.single('pdf'), async (req, res) => {
+  let storagePath = null;
 
-    if (!pdfBase64) {
+  try {
+    // ── Resolve PDF buffer + file metadata ──────────────────────────────────
+    let pdfBuffer, originalName, fileSize;
+
+    if (req.file) {
+      // Multipart upload – file already on disk
+      storagePath = req.file.path;
+      originalName = req.file.originalname;
+      fileSize = req.file.size;
+      pdfBuffer = await readFile(storagePath);
+    } else if (req.body?.pdfBase64) {
+      // Legacy base64 JSON body – save to disk so we have a storagePath
+      pdfBuffer = Buffer.from(req.body.pdfBase64, 'base64');
+      originalName = req.body.filename || 'upload.pdf';
+      fileSize = pdfBuffer.length;
+      const filename = `${crypto.randomUUID()}-${originalName}`;
+      storagePath = path.join(PDF_UPLOAD_DIR, filename);
+      await writeFile(storagePath, pdfBuffer);
+    } else {
       return res.status(400).json({
-        error: 'PDF data is required (base64 encoded)'
+        error: 'A PDF is required: send a multipart "pdf" field or a "pdfBase64" JSON body',
       });
     }
 
-    // Convert base64 to buffer
-    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+    const patientId = req.body?.patientId || null;
+    const options = req.body?.options
+      ? (typeof req.body.options === 'string' ? JSON.parse(req.body.options) : req.body.options)
+      : {};
 
-    // Import pdfExtractor
+    // ── Persist PDF record (if DB is available) ─────────────────────────────
+    const orm = await getDB();
+    let pdfRecord = null;
+
+    if (orm) {
+      const [inserted] = await orm.db
+        .insert(orm.pdfs)
+        .values({
+          patientId: patientId || null,
+          filename: path.basename(storagePath),
+          originalName,
+          fileSize,
+          storagePath,
+          processingStatus: 'processing',
+        })
+        .returning();
+      pdfRecord = inserted;
+    }
+
+    // ── Run AI extraction ────────────────────────────────────────────────────
     const pdfExtractor = (await import('../ai/pdf-extractor.js')).default;
-
-    // Perform extraction
     const result = await pdfExtractor.extractLabValues(pdfBuffer, options);
 
-    res.json(result);
+    // ── Persist extraction results ───────────────────────────────────────────
+    const savedResults = [];
+
+    if (orm && pdfRecord) {
+      // Update PDF record with extracted data
+      await orm.db
+        .update(orm.pdfs)
+        .set({
+          extractedData: result.success ? result.data : null,
+          isProcessed: result.success,
+          processingStatus: result.success ? 'completed' : 'failed',
+          processingError: result.success ? null : (result.error || null),
+          processedAt: new Date(),
+          updatedAt: new Date(),
+        })
+        .where(eq(orm.pdfs.id, pdfRecord.id));
+
+      // Save individual lab test results when patientId is provided
+      if (result.success && patientId && result.data?.tests?.length > 0) {
+        const testDate = result.data.metadata?.testDate
+          ? new Date(result.data.metadata.testDate)
+          : new Date();
+
+        for (const test of result.data.tests) {
+          // Must have a usable numeric value
+          if (test.numericValue == null || Number.isNaN(test.numericValue)) continue;
+
+          // Find matching lab test definition (case-insensitive)
+          const defs = await orm.db
+            .select()
+            .from(orm.labTestDefinitions)
+            .where(ilike(orm.labTestDefinitions.name, test.testName))
+            .limit(1);
+
+          if (defs.length === 0) continue; // Unknown test – skip, don't fail
+
+          const def = defs[0];
+          const isAbnormal = test.isAbnormal ?? (
+            def.referenceMin !== null &&
+            def.referenceMax !== null &&
+            (test.numericValue < parseFloat(def.referenceMin) ||
+             test.numericValue > parseFloat(def.referenceMax))
+          );
+
+          const [saved] = await orm.db
+            .insert(orm.labTestResults)
+            .values({
+              patientId,
+              labTestDefinitionId: def.id,
+              value: test.numericValue.toString(),
+              unit: test.unit || def.unit,
+              date: testDate,
+              isAbnormal,
+              notes: test.notes || null,
+              source: 'pdf',
+              sourceId: pdfRecord.id,
+            })
+            .returning();
+
+          savedResults.push(saved);
+        }
+      }
+    }
+
+    return res.json({
+      ...result,
+      ...(pdfRecord && {
+        pdfId: pdfRecord.id,
+        savedResults: savedResults.length,
+        savedResultIds: savedResults.map(r => r.id),
+      }),
+    });
 
   } catch (error) {
+    // Mark PDF record as failed if we created one
+    try {
+      const orm = await getDB();
+      if (orm) {
+        // Find the most recently inserted record for this file
+        if (storagePath) {
+          await orm.db
+            .update(orm.pdfs)
+            .set({
+              processingStatus: 'failed',
+              processingError: error.message,
+              updatedAt: new Date(),
+            })
+            .where(eq(orm.pdfs.storagePath, storagePath));
+        }
+      }
+    } catch { /* best-effort */ }
+
     console.error('PDF extraction error:', error);
     res.status(500).json({
       error: 'Failed to extract from PDF',
-      message: error.message
+      message: error.message,
     });
   }
+});
+
+/**
+ * GET /api/ai/pdf
+ * List uploaded PDFs (most recent first).
+ * Query: ?patientId=<uuid>&limit=20&offset=0
+ */
+router.get('/pdf', async (req, res) => {
+  const orm = await getDB();
+  if (!orm) {
+    return res.status(503).json({ error: 'Database not configured' });
+  }
+
+  const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+  const offset = parseInt(req.query.offset) || 0;
+
+  let rows;
+  if (req.query.patientId) {
+    rows = await orm.db
+      .select()
+      .from(orm.pdfs)
+      .where(eq(orm.pdfs.patientId, req.query.patientId))
+      .orderBy(desc(orm.pdfs.uploadedAt))
+      .limit(limit)
+      .offset(offset);
+  } else {
+    rows = await orm.db
+      .select()
+      .from(orm.pdfs)
+      .orderBy(desc(orm.pdfs.uploadedAt))
+      .limit(limit)
+      .offset(offset);
+  }
+
+  res.json({ pdfs: rows, count: rows.length });
+});
+
+/**
+ * GET /api/ai/pdf/:pdfId
+ * Retrieve a single PDF record including its extractedData.
+ */
+router.get('/pdf/:pdfId', async (req, res) => {
+  const orm = await getDB();
+  if (!orm) {
+    return res.status(503).json({ error: 'Database not configured' });
+  }
+
+  const rows = await orm.db
+    .select()
+    .from(orm.pdfs)
+    .where(eq(orm.pdfs.id, req.params.pdfId))
+    .limit(1);
+
+  if (rows.length === 0) {
+    return res.status(404).json({ error: 'PDF not found' });
+  }
+
+  res.json({ pdf: rows[0] });
+});
+
+/**
+ * GET /api/ai/pdf/:pdfId/results
+ * Retrieve the lab test results that were created from a specific PDF.
+ */
+router.get('/pdf/:pdfId/results', async (req, res) => {
+  const orm = await getDB();
+  if (!orm) {
+    return res.status(503).json({ error: 'Database not configured' });
+  }
+
+  // Verify the PDF exists
+  const pdfRows = await orm.db
+    .select({ id: orm.pdfs.id })
+    .from(orm.pdfs)
+    .where(eq(orm.pdfs.id, req.params.pdfId))
+    .limit(1);
+
+  if (pdfRows.length === 0) {
+    return res.status(404).json({ error: 'PDF not found' });
+  }
+
+  const results = await orm.db
+    .select()
+    .from(orm.labTestResults)
+    .where(eq(orm.labTestResults.sourceId, req.params.pdfId))
+    .orderBy(desc(orm.labTestResults.date));
+
+  res.json({ results, count: results.length });
 });
 
 /**
@@ -493,8 +752,26 @@ router.get('/features', (req, res) => {
     {
       name: 'PDF Lab Extraction',
       endpoint: '/api/ai/pdf/extract',
-      description: 'Extract lab values from PDF documents using AI',
+      description: 'Upload a PDF, extract lab values via AI, and persist results to the database',
       methods: ['POST']
+    },
+    {
+      name: 'List PDFs',
+      endpoint: '/api/ai/pdf',
+      description: 'List all uploaded PDFs',
+      methods: ['GET']
+    },
+    {
+      name: 'Get PDF',
+      endpoint: '/api/ai/pdf/:pdfId',
+      description: 'Retrieve a PDF record and its extracted data',
+      methods: ['GET']
+    },
+    {
+      name: 'PDF Lab Results',
+      endpoint: '/api/ai/pdf/:pdfId/results',
+      description: 'Retrieve the lab test results created from a PDF',
+      methods: ['GET']
     }
   ];
 
