@@ -4,6 +4,7 @@
  */
 
 import { createLogger } from './logger.js';
+import { getCacheInstance } from '../cache/cache-manager.js';
 
 const logger = createLogger('health');
 
@@ -113,31 +114,79 @@ registerHealthCheck('disk_space', async () => {
   };
 });
 
-// Database connection check (placeholder - implement based on your DB)
+// Database connection check
 registerHealthCheck('database', async () => {
-  // TODO: Implement actual database connectivity check
-  // For now, just check if we can connect
+  const databaseUrl = process.env.DATABASE_URL;
+
+  if (!databaseUrl) {
+    return {
+      status: 'skipped',
+      reason: 'DATABASE_URL not configured',
+      type: 'none',
+    };
+  }
+
+  // Dynamically import to avoid crashing when DB is not configured
+  const { db } = await import('../db/index.js');
+  const { sql } = await import('drizzle-orm');
+
+  const start = Date.now();
+  await db.execute(sql`SELECT 1`);
+  const latency = Date.now() - start;
+
   return {
-    status: 'connected',
-    type: 'memory', // or 'postgres', 'mysql', etc.
+    type: 'postgres',
+    latency: latency + 'ms',
   };
 });
 
-// Cache connection check (placeholder - implement based on your cache)
+// Cache connection check
 registerHealthCheck('cache', async () => {
-  // TODO: Implement actual cache connectivity check
+  const cache = getCacheInstance();
+
+  // Verify read/write with a probe key
+  const probeKey = '__health_probe__';
+  const probeValue = Date.now();
+  cache.set(probeKey, probeValue, 10); // TTL 10s
+  const retrieved = cache.get(probeKey);
+
+  if (retrieved !== probeValue) {
+    throw new Error('Cache read/write verification failed');
+  }
+
+  cache.del(probeKey);
+  const stats = cache.getStats();
+
   return {
-    status: 'connected',
-    type: 'memory', // or 'redis', etc.
+    type: 'memory',
+    keys: stats.keys,
+    hits: stats.hits,
+    misses: stats.misses,
   };
 });
 
-// External API check (optional)
+// External API check - validates API keys are configured
 registerHealthCheck('external_apis', async () => {
-  // TODO: Implement external API health checks
+  const apis = [
+    { name: 'openai', key: process.env.OPENAI_API_KEY },
+    { name: 'anthropic', key: process.env.ANTHROPIC_API_KEY },
+  ];
+
+  const results = apis.map(({ name, key }) => ({
+    name,
+    configured: Boolean(key),
+  }));
+
+  const configured = results.filter(a => a.configured);
+  const missing = results.filter(a => !a.configured).map(a => a.name);
+
+  if (configured.length === 0) {
+    throw new Error(`No AI API keys configured (checked: ${apis.map(a => a.name).join(', ')})`);
+  }
+
   return {
-    status: 'healthy',
-    apis: [],
+    configured: configured.map(a => a.name),
+    ...(missing.length > 0 && { notConfigured: missing }),
   };
 });
 

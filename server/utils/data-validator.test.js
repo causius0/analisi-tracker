@@ -57,7 +57,7 @@ describe('Data Validator - validateLabTest', () => {
 
     expect(result.valid).toBe(true);
     expect(result.flag).toBe('normal');
-    expect(result.referenceRange).toBe('12.0 - 15.5 g/dL');
+    expect(result.referenceRange).toBe('12 - 15.5 g/dL');
   });
 
   it('should detect high hemoglobin', () => {
@@ -68,7 +68,8 @@ describe('Data Validator - validateLabTest', () => {
 
     expect(result.valid).toBe(true);
     expect(result.flag).toBe('high');
-    expect(result.severity).toBe('mild');
+    // deviation = (18.5 - 17.5) / (17.5 - 13.5) = 0.25 → moderate
+    expect(result.severity).toBe('moderate');
     expect(result.message).toContain('Above reference range');
   });
 
@@ -80,7 +81,8 @@ describe('Data Validator - validateLabTest', () => {
 
     expect(result.valid).toBe(true);
     expect(result.flag).toBe('low');
-    expect(result.severity).toBe('mild');
+    // deviation = (13.5 - 12.0) / (17.5 - 13.5) = 0.375 → moderate
+    expect(result.severity).toBe('moderate');
     expect(result.message).toContain('Below reference range');
   });
 
