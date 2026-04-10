@@ -1,14 +1,55 @@
 /**
  * Database Schema
- * Drizzle ORM schema definitions for PostgreSQL (Single-User Version)
+ * Drizzle ORM schema definitions for PostgreSQL
  */
 
 import { pgTable, text, integer, numeric, timestamp, uuid, boolean, jsonb, index } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
-// Patients table (single-user: userId removed)
+// Users table
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: text('email').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  firstName: text('first_name'),
+  lastName: text('last_name'),
+  role: text('role').notNull().default('user'), // 'user', 'admin'
+  isActive: boolean('is_active').notNull().default(true),
+  emailVerified: boolean('email_verified').notNull().default(false),
+  lastLogin: timestamp('last_login'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+}, (table) => ({
+  emailIdx: index('users_email_idx').on(table.email),
+}));
+
+// Refresh tokens table
+export const refreshTokens = pgTable('refresh_tokens', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  token: text('token').notNull().unique(),
+  expiresAt: timestamp('expires_at').notNull(),
+  isRevoked: boolean('is_revoked').notNull().default(false),
+  revokedAt: timestamp('revoked_at'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+}, (table) => ({
+  userIdIdx: index('refresh_tokens_user_id_idx').on(table.userId),
+  tokenIdx: index('refresh_tokens_token_idx').on(table.token),
+}));
+
+// User preferences table
+export const userPreferences = pgTable('user_preferences', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().unique().references(() => users.id, { onDelete: 'cascade' }),
+  preferences: jsonb('preferences').notNull().default({}),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
+
+// Patients table
 export const patients = pgTable('patients', {
   id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   dateOfBirth: timestamp('date_of_birth'),
   sex: text('sex'), // 'male', 'female', 'other'
@@ -21,6 +62,7 @@ export const patients = pgTable('patients', {
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 }, (table) => ({
   nameIdx: index('patients_name_idx').on(table.name),
+  userIdIdx: index('patients_user_id_idx').on(table.userId),
 }));
 
 // Lab tests definitions
@@ -61,7 +103,7 @@ export const labTestResults = pgTable('lab_test_results', {
   patientDateIdx: index('lab_test_results_patient_date_idx').on(table.patientId, table.date),
 }));
 
-// PDFs table (single-user: userId removed)
+// PDFs table
 export const pdfs = pgTable('pdfs', {
   id: uuid('id').primaryKey().defaultRandom(),
   patientId: uuid('patient_id').references(() => patients.id, { onDelete: 'set null' }),
@@ -84,7 +126,7 @@ export const pdfs = pgTable('pdfs', {
   uploadedAtIdx: index('pdfs_uploaded_at_idx').on(table.uploadedAt),
 }));
 
-// Insights and alerts (single-user: userId removed)
+// Insights and alerts
 export const insights = pgTable('insights', {
   id: uuid('id').primaryKey().defaultRandom(),
   patientId: uuid('patient_id').notNull().references(() => patients.id, { onDelete: 'cascade' }),
@@ -103,11 +145,12 @@ export const insights = pgTable('insights', {
   createdAtIdx: index('insights_created_at_idx').on(table.createdAt),
 }));
 
-// Analytics cache (single-user: userId removed)
+// Analytics cache
 export const analyticsCache = pgTable('analytics_cache', {
   id: uuid('id').primaryKey().defaultRandom(),
   cacheKey: text('cache_key').notNull().unique(),
   cacheType: text('cache_type').notNull(), // 'trends', 'correlations', 'predictions', etc.
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }),
   patientId: uuid('patient_id').references(() => patients.id),
   data: jsonb('data').notNull(),
   expiresAt: timestamp('expires_at').notNull(),
@@ -117,9 +160,10 @@ export const analyticsCache = pgTable('analytics_cache', {
 }, (table) => ({
   cacheKeyIdx: index('analytics_cache_cache_key_idx').on(table.cacheKey),
   expiresAtIdx: index('analytics_cache_expires_at_idx').on(table.expiresAt),
+  userIdIdx: index('analytics_cache_user_id_idx').on(table.userId),
 }));
 
-// Export jobs (single-user: userId removed)
+// Export jobs
 export const exportJobs = pgTable('export_jobs', {
   id: uuid('id').primaryKey().defaultRandom(),
   type: text('type').notNull(), // 'csv', 'json', 'pdf'
