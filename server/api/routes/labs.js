@@ -11,6 +11,58 @@ import { validateZod, schemas } from '../../middleware/validation.js';
 import { apiRateLimiter } from '../../middleware/rateLimiter.js';
 import { asyncHandler, NotFoundError, ValidationError } from '../../middleware/errorHandler.js';
 import { logger } from '../../middleware/logger.js';
+import { getCacheInstance } from '../../cache/cache-manager.js';
+import { analyzeSingleLabTest } from '../../analytics/engine.js';
+
+const cache = getCacheInstance();
+
+/**
+ * Invalidate all cached analytics for a given user + labTestDefinitionId, then
+ * kick off a background pre-computation so the next request is instant.
+ */
+function invalidateAndPrefetch(userId, labTestDefinitionId) {
+  setImmediate(async () => {
+    try {
+      await cache.deletePattern(`${userId}:${labTestDefinitionId}`);
+
+      // Fetch current data and pre-warm the trends cache
+      const userPatients = await db
+        .select({ id: patients.id })
+        .from(patients)
+        .where(eq(patients.userId, userId));
+
+      if (userPatients.length === 0) return;
+
+      const patientIds = userPatients.map(p => p.id);
+      const { inArray: inArr } = await import('drizzle-orm');
+
+      const rows = await db
+        .select({ value: labTestResults.value, date: labTestResults.date })
+        .from(labTestResults)
+        .where(and(
+          eq(labTestResults.labTestDefinitionId, labTestDefinitionId),
+          inArr(labTestResults.patientId, patientIds)
+        ))
+        .orderBy(asc(labTestResults.date));
+
+      if (rows.length < 3) return; // Not enough points to trend
+
+      const data = rows.map(r => ({ value: parseFloat(r.value), timestamp: r.date.toISOString() }));
+      const result = await analyzeSingleLabTest(data, {
+        labTestId: labTestDefinitionId,
+        includeTrends: true,
+        includeAnomalies: true,
+        includePredictions: true,
+        forecastHorizon: 30
+      });
+
+      const cacheKey = cache.generateKey('trends', `${userId}:${labTestDefinitionId}`, { forecastHorizon: undefined });
+      await cache.set(cacheKey, result, 'medium', { cacheType: 'trends', userId });
+    } catch (err) {
+      logger.warn('Background trend pre-computation failed', { userId, labTestDefinitionId, err: err.message });
+    }
+  });
+}
 
 const router = express.Router();
 
@@ -280,6 +332,8 @@ router.post('/results',
       resultId: newResults[0].id
     });
 
+    invalidateAndPrefetch(req.user.id, labTestDefinitionId);
+
     res.status(201).json({
       message: 'Lab test result created successfully',
       result: newResults[0]
@@ -338,6 +392,8 @@ router.patch('/results/:resultId',
       resultId
     });
 
+    invalidateAndPrefetch(req.user.id, existingResults[0].labTestDefinitionId);
+
     res.json({
       message: 'Lab test result updated successfully',
       result: updatedResults[0]
@@ -384,6 +440,8 @@ router.delete('/results/:resultId',
       userId: req.user.id,
       resultId
     });
+
+    invalidateAndPrefetch(req.user.id, existingResults[0].labTestDefinitionId);
 
     res.json({
       message: 'Lab test result deleted successfully'
